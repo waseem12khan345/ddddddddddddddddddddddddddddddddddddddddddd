@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading...</title>
+    <style>
+        /* Basic reset */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden; /* Prevent scrollbars during loading */
+        }
+        
+        /* Background image styling */
+        .loading-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('LOADING.GIF') no-repeat center center fixed; /* Add your background image URL here */
+            background-size: cover; /* Cover the entire viewport */
+            color: white;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        
+        .loading-container h1 {
+            font-size: 24px;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="loading-container">
+        <div>
+          
+        </div>
+    </div>
+
+    <script>
+        // Wait for 6 seconds before checking user status
+        setTimeout(function() {
+            if (localStorage.getItem("visitedBefore") === null) {
+                // First time visitor, set flag and redirect to page 1
+                localStorage.setItem("visitedBefore", "true");
+                window.location.href = 'ONETIMELOAD.html'; // New user goes to page 1
+            } else {
+                // Returning user, redirect to page 2
+                window.location.href = 'GAMES.html'; // Old user goes to page 2
+            }
+        }, 6000); // 6 seconds delay
+    </script>
+</body>
+</html>
